@@ -1,0 +1,99 @@
+﻿
+
+@{
+    ViewData["Title"] = "Home Page";
+
+
+}
+
+
+<div class="text-center">
+    <h2 >Сервис по автоматическому формированию метаданных</h2>
+    
+</div>
+
+<div>
+
+    <p>Выберите файл: </p>
+    @using (Html.BeginForm("Click", "Home", FormMethod.Post))
+    {
+            <button type="submit" value="select">Выбрать файл</button>
+    }
+       
+
+</div>
+
+<div>
+
+    <p></p>
+    <table>
+        <tr>
+            <th valign="top">Файл:</th>
+            <th>
+                @ViewData["File"]
+            </th>
+        </tr>
+        <tr>
+            <th valign="top">Формат:</th>
+            <th>
+                @ViewData["Format"]
+            </th>
+        </tr>
+        <tr>
+            <th valign="top">Название:</th>
+            <th>
+                @ViewData["Name"]
+            </th>
+        </tr>
+        <tr>
+            <th valign="top">Автор:</th>
+            <th>
+                @ViewData["Author"]
+            </th>
+        </tr>
+        <tr>
+            <th valign="top">Журнал:</th>
+            <th>
+                @ViewData["Jornal"]
+            </th>
+        </tr>
+        <tr>
+            <th valign="top">Год:</th>
+            <th>
+                @ViewData["Year"]
+            </th>
+        </tr>
+        <tr>
+            <th valign="top">Аннотация: &nbsp;</th>
+            <th>
+                @ViewData["Annotation"]
+            </th>
+        </tr>
+        <tr>
+            <th valign="top">Ключевые слова:</th>
+            <th>
+                @ViewData["KeyWords"]
+            </th>
+        </tr>
+        <tr>
+            <th valign="top">Литература:</th>
+            <th>
+                @{
+                    foreach (var r in ViewData["References"].ToString().Split(Environment.NewLine))
+                    {
+                        @r
+                        <br />
+                    }
+                }
+
+            </th>
+        </tr>
+        @*<tr>
+            <th>Формулы:</th>
+            <th>
+                @ViewData["Maths"]
+            </th>
+        </tr>*@
+    </table>
+    
+</div>
